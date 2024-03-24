@@ -20,9 +20,9 @@ export default function useSpeechToText(url, sessionId, onMessage) {
         socketConnection.current.onmessage = (event) => {
 
             if (JSON.parse(event.data).message.type === 'system') {
-                console.log('System message received:', JSON.parse(event.data).message.content);
-                if (JSON.parse(event.data).message.content === 'session-established') {
-                    console.log('Session established');
+                console.log('System message received:', JSON.parse(event.data).message);
+                if (JSON.parse(event.data).message.task === 'session-established') {
+                    console.log('Session established -- ready to receive audio data.');
                 }
             }
 
